@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$DB = "3dos_council";
+$db = "3dos_council";
 $user = "root";
 $pass = "";
 try {
