@@ -1,5 +1,5 @@
 <?php
- 
+ require_once "../connection.php";
 function submission_get_by_user($connection, $userId)
 {
     $stmt = $connection->prepare('SELECT * FROM submissions WHERE user_id = ? AND is_deleted = 0');
