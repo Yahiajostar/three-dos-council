@@ -1,6 +1,6 @@
 <?php
  
- 
+ require_once "../connection.php";
 function task_get_all($connection)
 {
     $stmt = $connection->query('SELECT * FROM tasks WHERE is_deleted = 0');
