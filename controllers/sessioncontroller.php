@@ -76,3 +76,49 @@ function deleteSession($id)
         "Session Deleted Successfully"
     );
 }
+
+//add session
+
+function addSession(){
+    $data = json_decode(
+        file_get_contents("php://input"),
+        true
+    );
+    addSessionRepo(
+        $data["title"],
+        $data["session_date"],
+        $data["council_id"]
+    );
+    response(
+        201,
+        "Session Added Successfully"
+    );
+}
+
+//Edit sessions
+
+function updateSession($id){
+    $session = getSessionByIdRepo($id);
+    if(!$session){
+        response(
+            404,
+            "Session Not Found"
+        );
+        return;
+    }
+        $data = json_decode(
+        file_get_contents("php://input"),
+        true
+    );
+    updateSessionRepo(
+        $id,
+        $data["title"],
+        $data["session_date"],
+        $data["council_id"]
+    );
+        response(
+        200,
+        "Session Updated Successfully"
+    );
+}
+?>
