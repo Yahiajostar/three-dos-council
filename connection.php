@@ -5,7 +5,7 @@ $user = "root";
 $pass = "";
 try {
     $connection = new PDO(
-        "mysql:host=$host;dbname=$dbname",
+        "mysql:host=$host;dbname=$db",
         $user,
         $pass
     );
