@@ -41,3 +41,29 @@ function getMaterialByIdRepo($id)
 
     return $query->fetch(PDO::FETCH_ASSOC);
 }
+
+function addMaterialRepo($session_id, $content){
+
+    global $connection;
+
+    $query = $connection->prepare(
+        "INSERT INTO materials(session_id, content) VALUES(?,?)"
+    );
+     return $query->execute([
+        $session_id,
+        $content
+     ]);
+}
+
+function updateMaterialRepo($id, $content){
+
+    global $connection;
+    $query = $connection->prepare(
+        "UPDATE materials SET content = ? WHERE id = ?"
+    );
+    return $query->execute([
+        $content,
+        $id
+    ]);
+}
+?>
