@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../helper/response.php';
+require_once __DIR__ . '/../helpers/response.php';
 require_once __DIR__ . '/../repos/UserRepo.php';
 
 function getUserList(){
@@ -12,7 +12,6 @@ function getSingleUser($id){
 
     if(!$user){
         response(404, "User not found");
-        return;
     }
 
     response(200, "User fetched successfully", $user);
@@ -23,7 +22,6 @@ function editUser($id, $data){
 
     if(!$user){
         response(404, "User not found");
-        return;
     }
 
     $name = $data['name'] ?? $user['name'];
@@ -39,7 +37,6 @@ function deleteUser($id){
 
     if(!$user){
         response(404, "User not found");
-        return;
     }
 
     softDeleteUser($id);
@@ -47,23 +44,12 @@ function deleteUser($id){
     response(200, "User deleted successfully");
 }
 
-function assignUserTitle($userId, $data){
-    $user = getUserById($userId);
-
-    if(!$user){
-        response(404, "User not found");
-        return;
+function assignUserTitle($id, $data){
+    if(!isset($data['title_id'])){
+        response(400, "title_id is required");
     }
 
-    $titleId = $data['title_id'] ?? null;
-
-    if(!$titleId){
-        response(400, "Title ID is required");
-        return;
-    }
-
-    assignTitle($userId, $titleId);
+    assignTitle($id, $data['title_id']);
 
     response(200, "Title assigned successfully");
 }
-?>

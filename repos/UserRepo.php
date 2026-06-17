@@ -61,4 +61,3 @@ function assignTitle($userId, $titleId){
 
     return $statement->execute([$userId, $titleId]);
 }
-?>
