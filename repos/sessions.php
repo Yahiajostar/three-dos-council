@@ -1,4 +1,3 @@
-
 <?php
 
 function getSessionByIdRepo($id)
@@ -24,3 +23,33 @@ function deleteSessionRepo($id)
 
     return $query->execute([$id]);
 }
+
+function addSessionRepo($title, $session_date, $council_id){
+    global $connection;
+    $query = $connection->prepare(
+        "INSERT INTO sessions (title, session_date, council_id) VALUES(?,?,?)"
+    );
+    return $query->execute([
+        $title,
+        $session_date,
+        $council_id
+    ]);
+}
+
+function updateSessionRepo($id, $title, $session_date, $council_id){
+    global $connection;
+    $query = $connection->prepare(
+         "UPDATE sessions SET 
+         title = ?,
+        session_date = ?,
+        council_id = ?
+        WHERE id = ?"
+    );
+    return $query->execute([
+        $title,
+        $session_date,
+        $council_id,
+        $id
+    ]);
+}
+?>
