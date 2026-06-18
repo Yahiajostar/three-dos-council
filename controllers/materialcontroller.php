@@ -43,6 +43,9 @@ function deleteMaterial($id)
 
 //add material
 function addMaterial(){
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+
     $data = json_decode(
         file_get_contents("php://input"),
         true
@@ -59,6 +62,9 @@ function addMaterial(){
 
 //update Material
 function updateMaterial($id){
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+    
     $material = getMaterialByIdRepo($id);
 
     if(!$material){
