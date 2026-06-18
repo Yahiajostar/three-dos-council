@@ -29,7 +29,18 @@ function sendMailOTP($email, $otp){
         $mail->send();
        // return true;
         
-    } catch (Exception $e) {
-        echo "Mail Error: " . $mail->ErrorInfo;
+    }// catch (Exception $e) {
+    //     echo "Mail Error: " . $mail->ErrorInfo;
+    // }
+    catch (Exception $e) {
+        header('Content-Type: application/json');
+        http_response_code(500);
+
+        echo json_encode([
+            "status" => 500,
+            "message" => "Mail Error Occurred",
+            "error" => $mail->ErrorInfo
+        ]);
+        exit;
     }
 }

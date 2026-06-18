@@ -5,7 +5,7 @@ require_once '../helpers/JWT.php';
 require_once '../repos/user_repo.php';
 require_once '../helpers/validation.php';
 function login($data){
-    global $conn;
+   // global $connection;
     $email = $data['email'];
     $pass  = $data['password'];
     empty_validation($data , ['email' , 'password']);
