@@ -13,7 +13,7 @@ require_once '../helpers/response.php';
 require_once '../helpers/validation.php';
 require_once '../repos/user_repo.php';
 require_once '../redis_connection.php';
-require_once '../helpers/send_mail.php';
+require_once 'send_mail.php';
 //$redis = new Predis\Client();
 
 function forget_password($data){

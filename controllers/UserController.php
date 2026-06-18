@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../helpers/response.php';
-require_once __DIR__ . '/../repos/UserRepo.php';
+//require_once __DIR__ . '/../repos/UserRepo.php';
+require_once __DIR__ . '/../repos/user_repo.php';
+
 
 function getUserList(){
     $users = getAllUsers();
@@ -18,7 +20,7 @@ function getSingleUser($id){
 }
 
 function editUser($id, $data){
-    $user = getUserById($id);
+    $user = getUserById2($id);
 
     if(!$user){
         response(404, "User not found");
