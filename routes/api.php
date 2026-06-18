@@ -55,14 +55,13 @@ if(
 }
 
 //delete session
-elseif($method == "DELETE")
+if($method == "DELETE")
 {
-    if($resource == "sessions" && isset($segments[2]))
+    if($resource == "sessions" && isset($segments[1]))
     {
         deleteSession($segments[1]);
     }
 }
-
 //get materials
 if(
     $_SERVER['REQUEST_METHOD'] == "GET"

@@ -1,5 +1,5 @@
 <?php
-
+require_once "../helpers/JWT.php";
 require_once "../connection.php";
 require_once "../helpers/response.php";
 require_once "../repos/sessions.php";
@@ -7,6 +7,8 @@ require_once "../repos/sessions.php";
 //GET ALL SESSIONS
 function getAllSessions()
 {
+ 
+    VerifyToken();
     global $connection;
     try {
 
@@ -37,8 +39,9 @@ function getAllSessions()
 //GET Session by id
 function getSessionById($id)
 {
-    $session = getSessionByIdRepo($id);
-
+  
+    VerifyToken();
+     $session = getSessionByIdRepo($id);
     if(!$session)
     {
         response(
@@ -51,6 +54,7 @@ function getSessionById($id)
     response(
         200,
         "Session Retrieved Successfully",
+        $session
     );
 }
 
@@ -58,6 +62,9 @@ function getSessionById($id)
 
 function deleteSession($id)
 {
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+
     $session = getSessionByIdRepo($id);
 
     if(!$session)

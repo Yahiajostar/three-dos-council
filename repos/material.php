@@ -7,7 +7,7 @@ function getAllMaterialsRepo()
     global $connection;
 
     $query = $connection->prepare(
-        "SELECT * FROM materials WHERE is_deleted = 0"
+        "SELECT * FROM materials"
     );
 
     $query->execute();
@@ -20,9 +20,7 @@ function deleteMaterialRepo($id)
     global $connection;
 
     $query = $connection->prepare(
-        "UPDATE materials
-         SET is_deleted = 1
-         WHERE id = ?"
+        "DELETE FROM materials WHERE id = ?"
     );
 
     return $query->execute([$id]);

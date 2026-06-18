@@ -1,0 +1,70 @@
+{
+  "info": {
+    "_postman_id": "eec9af43-e93d-4fee-a959-07caad1cd359",
+    "name": "AUTH",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55830124",
+    "_collection_link": "https://go.postman.co/collection/55830124-eec9af43-e93d-4fee-a959-07caad1cd359?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "forget password",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "SognUp",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "reset password",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"\",\r\n    \"otp\": \"\",\r\n    \"new_password\":\"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/3dos council/routes/auth.php?action=reset_password",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "3dos council",
+            "routes",
+            "auth.php"
+          ],
+          "query": [
+            {
+              "key": "action",
+              "value": "reset_password"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
