@@ -79,3 +79,39 @@ if(
 ){
     deleteMaterial($matches[1]);
 }
+//add session
+if(
+    $_SERVER['REQUEST_METHOD'] == "POST"
+    &&
+    $path == "/sessions"
+){
+    addSession();
+}
+
+//update session
+if(
+    $_SERVER['REQUEST_METHOD'] == "PUT"
+    &&
+    preg_match("#^/sessions/([0-9]+)$#", $path, $matches)
+){
+    updateSession($matches[1]);
+}
+
+//add material
+if(
+    $_SERVER['REQUEST_METHOD'] == "POST"
+    &&
+    $path == "/materials"
+){
+    addMaterial();
+}
+
+//update material
+if(
+    $_SERVER['REQUEST_METHOD'] == "PUT"
+    &&
+    preg_match("#^/materials/([0-9]+)$#", $path, $matches)
+){
+    updateMaterial($matches[1]);
+}
+?>
