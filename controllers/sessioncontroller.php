@@ -87,6 +87,9 @@ function deleteSession($id)
 //add session
 
 function addSession(){
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+
     $data = json_decode(
         file_get_contents("php://input"),
         true
@@ -105,6 +108,9 @@ function addSession(){
 //Edit sessions
 
 function updateSession($id){
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+    
     $session = getSessionByIdRepo($id);
     if(!$session){
         response(
