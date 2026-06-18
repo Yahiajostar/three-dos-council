@@ -1,6 +1,7 @@
 <?php
 
-function response($status, $message, $data = null){
+function response($status, $message, $data = null)
+{
     http_response_code($status);
 
     header("Content-Type: application/json");
