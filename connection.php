@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$DB= "db";
+$DB= "3dos_council";
 $user = "root";
 $pass = "";
 
