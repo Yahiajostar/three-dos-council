@@ -1,6 +1,6 @@
 <?php
-  require_once "taskController.php";
- require_once "SubmController.php";
+  require_once __DIR__ . '/../controllers/taskController.php';
+ require_once __DIR__ . '/../controllers/SubmController.php';
 
  
 $method = $_SERVER['REQUEST_METHOD'];
