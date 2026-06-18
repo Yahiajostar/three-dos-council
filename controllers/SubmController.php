@@ -1,6 +1,6 @@
 <?php
- require_once "SubmRepo.php";
- require_once "JWT.php";
+ require_once "../repos/SubmRepo.php";
+ require_once "../helpers/JWT.php";
 
 function view_submission($connection, $userId)
 {
