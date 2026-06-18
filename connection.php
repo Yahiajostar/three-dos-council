@@ -5,7 +5,7 @@ $user = "root";
 $pass = "";
 try {
     $connection = new PDO(
-        "mysql:host=$host;dbname=$dbname",
+        "mysql:host=$host;dbname=$DB",
         $user,
         $pass
     );
@@ -17,3 +17,4 @@ try {
     echo $e->getMessage();
 }
 ?>
+ 
