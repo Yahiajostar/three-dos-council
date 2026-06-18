@@ -1,5 +1,5 @@
 <?php
-
+require_once "../helpers/JWT.php";
 require_once "../repos/material.php";
 require_once "../helpers/response.php";
 
@@ -7,6 +7,7 @@ require_once "../helpers/response.php";
 //get all material
 function getAllMaterials()
 {
+    VerifyToken();
     $materials = getAllMaterialsRepo();
 
     response(
@@ -19,6 +20,8 @@ function getAllMaterials()
 //delete material
 function deleteMaterial($id)
 {
+    $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
     $material = getMaterialByIdRepo($id);
 
     if(!$material)

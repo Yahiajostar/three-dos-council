@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2026 at 10:28 PM
+-- Generation Time: Jun 15, 2026 at 02:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,8 +61,7 @@ CREATE TABLE `feedback` (
   `feedback_id` int(11) NOT NULL,
   `submission_id` int(11) NOT NULL,
   `comment` text NOT NULL,
-  `rating` int(11) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -74,8 +73,7 @@ CREATE TABLE `feedback` (
 CREATE TABLE `materials` (
   `id` int(11) NOT NULL,
   `session_id` int(11) NOT NULL,
-  `content` longtext NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `content` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,9 +99,7 @@ CREATE TABLE `submissions` (
   `submission_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL,
-  `submission_time` datetime NOT NULL,
-  `uploads` text DEFAULT NULL,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `sumission_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -132,7 +128,7 @@ CREATE TABLE `tasks` (
   `description` text NOT NULL,
   `deadline` datetime NOT NULL,
   `assignedby` int(11) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `submittedby` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -171,8 +167,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `council_id` int(11) NOT NULL,
-  `role` enum('admin','delegates') NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL DEFAULT 0
+  `role` enum('head','instructors','delegates','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
