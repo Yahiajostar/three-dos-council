@@ -1,6 +1,6 @@
 <?php
-  require_once "taskRepo.php";
-  require_once "JWT.php";
+  require_once "../repos/taskRepo.php";
+  require_once "../helpers/JWT.php";
 
 function task_view($connection)
 {
