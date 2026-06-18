@@ -8,6 +8,7 @@ function sendMailOTP($email, $otp){
     $mail = new PHPMailer(true);
 
     try {
+        // SMTP Server configuration environment setup
         $mail->isSMTP();
 //         $mail->SMTPDebug = 2;
 // $mail->Debugoutput = 'html';
@@ -15,13 +16,14 @@ function sendMailOTP($email, $otp){
         $mail->SMTPAuth   = true;
         $mail->Username   = 'yahiadiaa1010@gmail.com'; 
         //$mail->Password   = 'etqf tbpe anwo icck';   
-        $mail->Password   = 'etqftbpeanwoicck';   
+        $mail->Password   = 'xvfv uecm thaa abvr';    // App-specific security password credential
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
-        $mail->setFrom('yahiadiaa1010@gmail.com', '3dos Council Admin');
+        // Identity Metadata Assignment
+        $mail->setFrom('yahiadiaa1010@gmail.com', '3dos_councils (2)');
         $mail->addAddress($email); 
-
+// Email Body Payload definitions
         $mail->isHTML(true);
         $mail->Subject = 'OTP Verification';
         $mail->Body    = "Your OTP code is: " . $otp;
@@ -37,10 +39,10 @@ function sendMailOTP($email, $otp){
         http_response_code(500);
 
         echo json_encode([
-            "status" => 500,
-            "message" => "Mail Error Occurred",
-            "error" => $mail->ErrorInfo
-        ]);
+           // "status" => 500,
+            "message" => $e
+           // "error" => $mail->ErrorInfo
+             ]);
         exit;
     }
 }
