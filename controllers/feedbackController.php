@@ -31,8 +31,8 @@ function feedback_show($id){
 }
 
  function feedback_delete($id){
-    $feedback_delete = getFeedbackById($id);
-    if(!getFeedbacskById($id)){
+    $feedback_delete = getFeedbacksById($id);
+    if(!getFeedbacksById($id)){
          response(404,"feedback not found");
     }
     deleteFeedback($id);

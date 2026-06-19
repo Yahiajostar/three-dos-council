@@ -9,7 +9,7 @@ require_once __DIR__ . '/../helpers/response.php';
 //require_once __DIR__ . '/../repos/UserRepo.php';
 require_once __DIR__ . '/../repos/user_repo.php';
 
-
+require_once __DIR__. '/../helpers/JWT.php';
 /**
  * Returns the full list of users.
  */
@@ -39,12 +39,7 @@ function getSingleUser($id){
  * @param array $data Request body, may contain 'name' and/or 'email'
  */
 function editUser($id, $data){
-<<<<<<< HEAD
-    $user = getUserById($id);
-=======
     $user = getUserById2($id);
-
->>>>>>> 0132da9b6ace8d083dbd288da6ef32e79c43eb02
     if(!$user){
         response(404, "User not found");
     }
@@ -60,7 +55,9 @@ function editUser($id, $data){
  * @param int $id The user's id
  */
 function deleteUser($id){
-    $user = getUserById($id);
+     $verifiedToken = VerifyToken();
+    require_admin($verifiedToken);
+        $user = getUserById2($id);
     if(!$user){
         response(404, "User not found");
     }
